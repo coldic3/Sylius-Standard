@@ -548,6 +548,9 @@
     "sylius/mailer-bundle": {
         "version": "v1.4.4"
     },
+    "sylius/multi-source-inventory-plugin": {
+        "version": "dev-main"
+    },
     "sylius/multi-store-plugin": {
         "version": "dev-main"
     },

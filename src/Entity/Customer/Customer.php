@@ -7,8 +7,8 @@ namespace App\Entity\Customer;
 use Doctrine\ORM\Mapping as ORM;
 use Sylius\Component\Core\Model\Customer as BaseCustomer;
 use Sylius\Component\Core\Model\CustomerInterface;
-use Sylius\Plus\CustomerPools\Domain\Model\CustomerInterface as CustomerPoolsCustomerInterface;
-use Sylius\Plus\CustomerPools\Domain\Model\CustomerPoolAwareTrait;
+use Sylius\MultiStorePlugin\CustomerPools\Domain\Model\CustomerInterface as CustomerPoolsCustomerInterface;
+use Sylius\MultiStorePlugin\CustomerPools\Domain\Model\CustomerPoolAwareTrait;
 use Sylius\Plus\Loyalty\Domain\Model\CustomerInterface as LoyaltyCustomerInterface;
 use Sylius\Plus\Loyalty\Domain\Model\LoyaltyAwareTrait;
 

@@ -244,3 +244,15 @@ sylius_theme:
             scan_depth: 1
             directories:
                 - "%kernel.project_dir%/themes"
+
+sylius_plus:
+    pdf_generator:
+        enabled: false
+
+sylius_invoicing:
+    pdf_generator:
+        enabled: false
+
+sylius_refund:
+    pdf_generator:
+        enabled: false

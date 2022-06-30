@@ -6,14 +6,6 @@
     <div class="column">
         {{ sylius_template_event('sylius.admin.login.before_form', {'form': form}) }}
 
-        {% if paths.logo is defined %}
-            <div style="max-width: 270px; margin: 0 auto; margin-bottom: 40px;">
-                <img src="{{ asset(paths.logo) }}" class="ui fluid image" id="logo">
-            </div>
-        {% else %}
-            {% include '@SyliusPlusPlugin/Admin/Layout/_logo.html.twig' %}
-        {% endif %}
-
         {% if last_error %}
             <div class="ui left aligned basic segment">
                 {{ messages.error(last_error.messageKey) }}
