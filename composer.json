@@ -29,7 +29,8 @@
         "sylius/sylius": "^1.12",
         "symfony/dotenv": "^5.4 || ^6.0",
         "symfony/runtime": "^5.4 || ^6.0",
-        "symfony/flex": "^2.1"
+        "symfony/flex": "^2.1",
+        "sylius/refund-plugin": "dev-units-refunded-flow-improvements"
     },
     "require-dev": {
         "behat/behat": "^3.7",
@@ -60,6 +61,12 @@
         "symfony/intl": "^5.4 || ^6.0",
         "symfony/web-profiler-bundle": "^5.4 || ^6.0"
     },
+    "repositories": [
+        {
+            "type": "github",
+            "url": "git@github.com:coldic3/RefundPlugin.git"
+        }
+    ],
     "config": {
         "preferred-install": {
             "*": "dist"

@@ -2,6 +2,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
+    sylius_refund.refund_enum_type: App\Entity\Refund\Type\RefundEnumType
+    sylius_refund.refund_type: App\Entity\Refund\RefundType
 
 services:
     # Default configuration for services in *this* file
@@ -33,3 +35,46 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    #######################
+    # Configure OrderItem #
+    #######################
+    App\Converter\RequestToOrderItemRefundConverter:
+        arguments:
+            - '@Sylius\RefundPlugin\Converter\RefundUnitsConverterInterface'
+        tags: ['sylius_refund.request_to_refund_units_converter']
+
+    App\Converter\OrderItemLineItemsConverter:
+        arguments:
+            - '@sylius.repository.order_item'
+            - '@Sylius\RefundPlugin\Provider\TaxRateProviderInterface'
+        tags: ['sylius_refund.line_item_converter']
+
+    App\Provider\OrderItemTotalProvider:
+        arguments:
+            - '@sylius.repository.order_item'
+        tags: [{ name: 'sylius_refund.refund_unit_total_provider', refund_type: 'order_item' }]
+    
+    App\Refunder\OrderItemsRefunder:
+        arguments:
+            - '@Sylius\RefundPlugin\Creator\RefundCreatorInterface'
+            - '@sylius.event_bus'
+            - '@Sylius\RefundPlugin\Filter\UnitRefundFilterInterface'
+        tags: ['sylius_refund.refunder']
+    
+    App\Listener\ItemRefundedEventListener:
+        arguments:
+            - '@Sylius\RefundPlugin\StateResolver\OrderPartiallyRefundedStateResolverInterface'
+        tags: [{ name: 'messenger.message_handler', bus: 'sylius.event_bus' }]
+        
+    #########################    
+    # Disable OrderItemUnit #
+    #########################
+    Sylius\RefundPlugin\Converter\OrderItemUnitLineItemsConverter:
+        tags: []
+
+    Sylius\RefundPlugin\Converter\RequestToOrderItemUnitRefundConverter:
+        tags: []
+    
+    Sylius\RefundPlugin\Refunder\OrderItemUnitsRefunder:
+        tags: []
