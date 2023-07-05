@@ -1,0 +1,5 @@
+{% import '@SyliusUi/Macro/buttons.html.twig' as buttons %}
+
+{% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('publish')), options.link.parameters|default({'id': data.id}))) %}
+
+{{ buttons.edit(path, action.label, true, data.id) }}

@@ -1,0 +1,4 @@
+sylius_grid:
+    templates:
+        action:
+            publish: 'book/publish.html.twig'
