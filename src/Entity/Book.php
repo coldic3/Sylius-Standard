@@ -19,8 +19,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 )]
 #[Operation\Create(grid: 'app_book', redirectToRoute: 'app_admin_book_index')]
 #[Operation\Index(grid: 'app_book')]
-#[Operation\Show(template: 'book/show.html.twig', grid: 'app_book')]
-#[Operation\Update(grid: 'app_book')]
+#[Operation\Show(template: 'book/show.html.twig')]
+#[Operation\Update]
 #[Operation\Delete]
 #[Operation\BulkDelete]
 #[Operation\ApplyStateMachineTransition(
